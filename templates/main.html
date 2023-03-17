@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>疫情监控</title>
+		<script src="../static/js/jquery-1.11.2.min.js"></script>
+		<link href="../static/css/main.css" rel="stylesheet" />
+		<script type="text/javascript" src="../static/js/echarts.min.js"></script>
+	</head>
+
+	<body>
+		<div id="title">我是标题</div>
+		<div id="tim">我是时间</div>
+		<div id="l1">左1</div>
+		<div id="l2">
+			<div style="align-items: center; justify-content:center; width: 30%; float: left;">
+				<div id="l21">
+					<div class="txt">
+						<h3>FEE指标：</h3>
+						<h3>Accuracy：</h3>
+					</div>
+					<div class="num">
+						<h2>123</h2>
+						<h2>123</h2>
+					</div>
+				</div>
+				<div style=" margin-left: 30px;">
+					<h4>是否进行数据保护？</h4>
+					<button onclick="refresh()">施加噪声</button>
+				</div>
+			</div>
+
+			<div id="patternLDP" style="width: 70%; float: right; height: 100%">
+
+			</div>
+		</div>
+
+		<!--<div id="c1">
+
+		</div>
+		<div id="c2">中2</div>-->
+		<div id="r1">
+			<div class="txt">
+				<h3>电器1</h3>
+				<h3>电器2</h3>
+				<h3>电器3</h3>
+				<h3>电器4</h3>
+				<h3>电器5</h3>
+				<h3>电器6</h3>
+				<h3>电器7</h3>
+				<h3>电器8</h3>
+				<h3>电器9</h3>
+			</div>
+			<div class="num">
+				<h2>123</h2>
+				<h2>123</h2>
+				<h2>123</h2>
+				<h2>123</h2>
+				<h2>123</h2>
+				<h2>123</h2>
+				<h2>123</h2>
+				<h2>123</h2>
+				<h2>123</h2>
+			</div>
+			<!--<div class="num"></div>
+			<div class="num"><h2>123</h2></div>
+			<div class="num"><h2>123</h2></div>-->
+
+			<!--<div class="txt"><h3>电器2</h3></div>
+			<div class="txt"><h3>电器3</h3></div>
+			<div class="txt"><h3>电器4</h3></div>-->
+		</div>
+
+		<div id="r2">
+			<div style="padding-left: 20px;">
+				<form method="post" enctype=multipart/form-data>
+					<p><input type=file name=file>
+						<input type=submit value=Upload>
+				</form>
+
+				<a href="#"><button type="submit" id="process">处理</button></a>
+
+				<h3>请选择训练配置：</h3> 训练模型：
+				<select name="" id="model">
+					<option value="">请选择训练模型</option>
+				</select>
+				训练集：
+				<select name="" id="house">
+					<option value="">请选择训练集</option>
+				</select>
+				<button  onclick="loading()">训练数据</button>
+				<div id="train" style="display: none;" class="pulse-wrapper">
+				    <div class="pulse-item one"></div>
+				    <div class="pulse-item two"></div>
+				    <div class="pulse-item three"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="../static/js/ec_left.js"></script>
+		<script type="text/javascript" src="../static/js/ec_pic.js"></script>
+		<script type="text/javascript" src="../static/js/controller.js"></script>
+	</body>
+
+</html>

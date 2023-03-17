@@ -1,0 +1,131 @@
+body{
+	margin: 0;
+	background: #333;
+}
+#title{
+	position: absolute;
+	width: 40%;
+	height: 10%;
+	top: 0;
+	left: 30%;
+	/*background: #666666;*/
+	color: white;
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#tim{
+	position: absolute;
+/*	width: 30%;*/
+	height: 10%;
+	top: 5%;
+	right: 2%;
+	color: #FFFFFF;
+	font-size: 20px;
+/*	background: green;*/
+}
+#c1{
+	position: absolute;
+	width: 30%;
+	height: 30%;
+	top: 10%;
+	left: 30%;
+	color: white;
+/*	background: #777777;*/
+}
+#c2{
+	position: absolute;
+	width: 30%;
+	height: 60%;
+	top: 40%;
+	left: 30%;
+	background: #888888;
+}
+#l1{
+	position: absolute;
+	width: 60%;
+	height: 50%;
+	top: 10%;
+	left: 0%;
+	background: #777777;
+}
+#l2{
+	position: absolute;
+	width: 60%;
+	height: 40%;
+	top: 60%;
+	left: 0%;
+	background: #666666;
+}
+#l21{
+	/*position: absolute;*/
+	top: 65%;
+	display: flex;
+}
+#r1{
+	position: absolute;
+	display: flex;
+	width: 40%;
+	height: 60%;
+	top: 10%;
+	right: 0;
+	background: #777777;
+}
+#r2{
+	position: absolute;
+	width: 40%;
+	height: 40%;
+	top: 60%;
+	right: 0;
+	background: #666666;
+}
+.num{
+	width: 30%;
+	/*float: left;
+	display: flex;*/
+	color: gold;
+	font-size: 12px;
+	align-items: center;
+	justify-content: center;
+}
+.txt{
+	margin-left: 40px;
+	width: 60%;
+/*	float: right;*/
+	font-family: "幼圆";
+	font-size: 15px;
+/*	display: flex;*/
+	align-items: center;
+	justify-content: center;
+}
+
+.pulse-wrapper {
+  margin: 20px;
+}
+.pulse-item {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: skyBlue;
+  animation: pulse-loader 0.4s ease 0s infinite alternate;
+  position: relative;
+  display: inline-block;
+}
+.two {
+  margin: 0 10px;
+  animation: pulse-loader 0.4s ease 0.2s infinite alternate;
+}
+.three {
+  animation: pulse-loader 0.4s ease 0.4s infinite alternate;
+}
+@keyframes pulse-loader {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.75);
+  }
+}

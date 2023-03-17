@@ -1,0 +1,2314 @@
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-beta16
+* @link https://tabler.io
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>电力监测平台</title>
+		<!-- CSS files -->
+		<link href="../static/css/tabler.min.css" rel="stylesheet" />
+		<link href="../static/css/tabler-flags.min.css" rel="stylesheet" />
+		<link href="../static/css/tabler-payments.min.css" rel="stylesheet" />
+		<link href="../static/css/tabler-vendors.min.css" rel="stylesheet" />
+		<link href="../static/css/demo.min.css" rel="stylesheet" />
+		<script type="text/javascript" src="../static/js/jquery-1.11.2.min.js"></script>
+		<style>
+			@import url('https://rsms.me/inter/inter.css');
+			 :root {
+				--tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="../static/js/demo-theme.min.js"></script>
+		<div class="page">
+			<!-- Navbar -->
+			<header>
+			</header>
+			<div class="navbar-expand-md">
+				<div class="collapse navbar-collapse" id="navbar-menu">
+					<div class="navbar navbar-light">
+						<div class="container-xl">
+							<ul class="navbar-nav">
+								<li class="nav-item active">
+									<a class="nav-link" href="./">
+										<span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                    </span>
+										<span class="nav-link-title">
+                      Home
+                    </span>
+									</a>
+								</li>
+
+							</ul>
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+									<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+									<div class="d-none d-xl-block ps-2">
+										<div>{{g.user.username}}</div>
+										<div class="mt-1 small text-muted">UI Designer</div>
+									</div>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+									<a href="#" class="dropdown-item">Status</a>
+									<a href="#" class="dropdown-item">Profile</a>
+									<a href="#" class="dropdown-item">Feedback</a>
+									<div class="dropdown-divider"></div>
+									<a href="./settings.html" class="dropdown-item">Settings</a>
+									<a href="logout" class="dropdown-item">Logout</a>
+								</div>
+							</div>
+							<div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+								<form action="./" method="get" autocomplete="off" novalidate>
+									<div class="input-icon">
+										<span class="input-icon-addon">
+                      <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                    </span>
+										<input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
+									</div>
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="page-wrapper">
+				<!-- Page header -->
+				<div class="page-header d-print-none">
+					<div class="container-xl">
+						<div class="row g-2 align-items-center">
+							<div class="col">
+								<!-- Page pre-title -->
+								<div class="page-pretitle">
+									Overview
+								</div>
+								<h2 class="page-title">
+                 基于NILM和LDP的电力监测平台
+                </h2>
+							</div>
+							<!-- Page title actions -->
+							<div class="col-auto ms-auto d-print-none">
+								<div class="btn-list">
+									<span class="d-none d-sm-inline">
+                    <a href="#" class="btn">
+                      New view
+                    </a>
+                  </span>
+									<a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+										<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+											<line x1="12" y1="5" x2="12" y2="19" />
+											<line x1="5" y1="12" x2="19" y2="12" />
+										</svg>
+										Post your data
+									</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Page body -->
+				<div class="page-body">
+					<div class="container-xl">
+						<div class="row row-deck row-cards">
+							<div class="col-sm-6 col-lg-3">
+								<div class="card">
+									<div class="card-body">
+										<div class="d-flex align-items-center">
+											<div class="subheader">Consumption</div>
+											<div class="ms-auto lh-1">
+												<div class="dropdown">
+													<a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
+													<div class="dropdown-menu dropdown-menu-end">
+														<a class="dropdown-item active" href="#">Last 7 days</a>
+														<a class="dropdown-item" href="#">Last 30 days</a>
+														<a class="dropdown-item" href="#">Last 3 months</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="h1 mb-3">75%</div>
+										<div class="d-flex mb-2">
+											<div>Increase rate</div>
+											<div class="ms-auto">
+												<span class="text-green d-inline-flex align-items-center lh-1">
+                          7% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="3 17 9 11 13 15 21 7" /><polyline points="14 7 21 7 21 14" /></svg>
+                        </span>
+											</div>
+										</div>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
+												<span class="visually-hidden">75% Complete</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="card">
+									<div class="card-body">
+										<div class="d-flex align-items-center">
+											<div class="subheader">近一个月总功耗</div>
+											<div class="ms-auto lh-1">
+												<div class="dropdown">
+													<a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
+													<div class="dropdown-menu dropdown-menu-end">
+														<a class="dropdown-item active" href="#">Last 7 days</a>
+														<a class="dropdown-item" href="#">Last 30 days</a>
+														<a class="dropdown-item" href="#">Last 3 months</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="d-flex align-items-baseline">
+											<div class="h1 mb-0 me-2">$4,300</div>
+											<div class="me-auto">
+												<span class="text-green d-inline-flex align-items-center lh-1">
+                          8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="3 17 9 11 13 15 21 7" /><polyline points="14 7 21 7 21 14" /></svg>
+                        </span>
+											</div>
+										</div>
+									</div>
+									<div id="chart-revenue-bg" class="chart-sm"></div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="card">
+									<div class="card-body">
+										<div class="d-flex align-items-center">
+											<div class="subheader">受加密数据</div>
+											<div class="ms-auto lh-1">
+												<div class="dropdown">
+													<a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
+													<div class="dropdown-menu dropdown-menu-end">
+														<a class="dropdown-item active" href="#">Last 7 days</a>
+														<a class="dropdown-item" href="#">Last 30 days</a>
+														<a class="dropdown-item" href="#">Last 3 months</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="d-flex align-items-baseline">
+											<div class="h1 mb-3 me-2">6,782</div>
+											<div class="me-auto">
+												<span class="text-yellow d-inline-flex align-items-center lh-1">
+                          0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        </span>
+											</div>
+										</div>
+										<div id="chart-new-clients" class="chart-sm"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title"><strong>公寓A用电概况</strong></h3>
+										<div id="chart-mentions" class="chart-lg"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="card">
+									<div class="card-body">
+										<h3 class="card-title"><strong>房屋分布</strong></h3>
+										<div class="ratio ratio-21x9">
+											<div>
+												<div id="map-world" class="w-100 h-100"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="row row-cards">
+									<div class="col-12">
+										<div class="card">
+											<div class="card-body">
+												<p class="mb-3">Using Energy <strong>6854.45W </strong>Today</p>
+												<div class="progress progress-separated mb-3">
+													<div class="progress-bar bg-primary" role="progressbar" style="width: 44%" aria-label="Regular"></div>
+													<div class="progress-bar bg-info" role="progressbar" style="width: 19%" aria-label="System"></div>
+													<div class="progress-bar bg-success" role="progressbar" style="width: 9%" aria-label="Shared"></div>
+												</div>
+												<div class="row">
+													<div class="col-auto d-flex align-items-center pe-2">
+														<span class="legend me-2 bg-primary"></span>
+														<span>Kitchen</span>
+														<span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">3853W</span>
+													</div>
+													<div class="col-auto d-flex align-items-center px-2">
+														<span class="legend me-2 bg-info"></span>
+														<span>Daily</span>
+														<span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">1017W</span>
+													</div>
+													<div class="col-auto d-flex align-items-center px-2">
+														<span class="legend me-2 bg-success"></span>
+														<span>Charge</span>
+														<span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">501W</span>
+													</div>
+													<div class="col-auto d-flex align-items-center ps-2">
+														<span class="legend me-2"></span>
+														<span>Other</span>
+														<span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">1483W</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="card" style="height: 28rem">
+											<div class="card-body card-body-scrollable card-body-scrollable-shadow">
+												<div class="divide-y">
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar">Ad</span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Please note that <strong>Fridge Freezer</strong> has consumed more than <strong>1500W</strong>.
+																</div>
+																<div class="text-muted">yesterday</div>
+															</div>
+															<div class="col-auto align-self-center">
+																<div class="badge bg-primary"></div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/002m.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Today, your total energy consumption is <strong>752W</strong>.
+																</div>
+																<div class="text-muted">2 days ago</div>
+															</div>
+															<div class="col-auto align-self-center">
+																<div class="badge bg-primary"></div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/003m.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	The <strong>Light consumption 237W</strong> is within a reasonable range.
+																</div>
+																<div class="text-muted">3 days ago</div>
+															</div>
+															<div class="col-auto align-self-center">
+																<div class="badge bg-primary"></div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/000f.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Please note that <strong>Dishwasher</strong> has consumed more than <strong>900W</strong>.
+																</div>
+																<div class="text-muted">4 days ago</div>
+															</div>
+															<div class="col-auto align-self-center">
+																<div class="badge bg-primary"></div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/001f.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	The new appliance <strong>Electric oven</strong> has been connected.
+																</div>
+																<div class="text-muted">3 days ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar">EP</span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	The new appliance <strong>Electric stover</strong> has been connected.
+																</div>
+																<div class="text-muted">yesterday</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/002f.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Your energy consumption(Encrypted) during<strong> June 29th and July 29th</strong> has been sent to third party.
+																</div>
+																<div class="text-muted">2 days ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/003f.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Your energy consumption(Original) during<strong> May 1st and May 15th</strong> has been sent to third party.
+																</div>
+																<div class="text-muted">4 days ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar">HS</span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	The <strong>Microwave consumption 516W</strong> is within a reasonable range.
+																</div>
+																<div class="text-muted">6 days ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/006m.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	The new appliance <strong>Microwave</strong> has been connected.
+																</div>
+																<div class="text-muted">6 days ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/004f.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Today, your total energy consumption is <strong>752W</strong>.
+																</div>
+																<div class="text-muted">2 days ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/007m.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Please note that <strong>Dishwasher</strong> has consumed more than <strong>900W</strong>.
+																</div>
+																<div class="text-muted">a week ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar">SA</span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Please note that <strong>Fridge Freezer</strong> has consumed more than <strong>1500W</strong>.
+																</div>
+																<div class="text-muted">a week ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/009m.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Your energy consumption(Encrypted) during<strong> April 1st and May 1st</strong> has been sent to third party.
+																</div>
+																<div class="text-muted">a month ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/010m.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Your energy consumption(original) during<strong> March 1st and April 1st</strong> has been sent to third party.
+																</div>
+																<div class="text-muted">a month ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/005f.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Today, your total energy consumption is <strong>752W</strong>.
+																</div>
+																<div class="text-muted">a month ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar" style="background-image: url(./static/avatars/006f.jpg)"></span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Today, your total energy consumption is <strong>462W</strong>.
+																</div>
+																<div class="text-muted">a month ago</div>
+															</div>
+														</div>
+													</div>
+													<div>
+														<div class="row">
+															<div class="col-auto">
+																<span class="avatar">AA</span>
+															</div>
+															<div class="col">
+																<div class="text-truncate">
+																	Today, your total energy consumption is <strong>634W</strong>.
+																</div>
+																<div class="text-muted">a month ago</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="card">
+									<div class="card-header border-0">
+										<div class="card-title"><strong>近一个月总功耗</strong></div>
+									</div>
+									<div class="position-relative">
+										<div class="position-absolute top-0 left-0 px-3 mt-1 w-75">
+											<div class="row g-2">
+												<div class="col-auto">
+													<div class="chart-sparkline chart-sparkline-square" id="sparkline-activity"></div>
+												</div>
+												<div class="col">
+													<div>Today's Earning: 3911451.40W</div>
+													<div class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<polyline points="3 17 9 11 13 15 21 7" />
+															<polyline points="14 7 21 7 21 14" />
+														</svg>
+														+7% more than yesterday</div>
+												</div>
+											</div>
+										</div>
+										<div id="chart-development-activity" style="height: 192px;"></div>
+									</div>
+									<div class="card-table table-responsive">
+										<table class="table table-vcenter">
+											<thead>
+												<tr>
+													<th>User</th>
+													<th>Commit</th>
+													<th>Date</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="w-1">
+														<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+													</td>
+													<td class="td-truncate">
+														<div class="text-truncate">
+															Add new appliance "Fridge"
+														</div>
+													</td>
+													<td class="text-nowrap text-muted">28 Nov 2019</td>
+												</tr>
+												<tr>
+													<td class="w-1">
+														<span class="avatar avatar-sm">JL</span>
+													</td>
+													<td class="td-truncate">
+														<div class="text-truncate">
+															Add new appliance "Dishwasher"
+														</div>
+													</td>
+													<td class="text-nowrap text-muted">27 Nov 2019</td>
+												</tr>
+												<tr>
+													<td class="w-1">
+														<span class="avatar avatar-sm" style="background-image: url(./static/avatars/002m.jpg)"></span>
+													</td>
+													<td class="td-truncate">
+														<div class="text-truncate">
+															Perform pattern-based differential privacy processing for data
+														</div>
+													</td>
+													<td class="text-nowrap text-muted">26 Nov 2019</td>
+												</tr>
+												<tr>
+													<td class="w-1">
+														<span class="avatar avatar-sm" style="background-image: url(./static/avatars/003m.jpg)"></span>
+													</td>
+													<td class="td-truncate">
+														<div class="text-truncate">
+															Add new appliance "Light"
+														</div>
+													</td>
+													<td class="text-nowrap text-muted">26 Nov 2019</td>
+												</tr>
+												<tr>
+													<td class="w-1">
+														<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000f.jpg)"></span>
+													</td>
+													<td class="td-truncate">
+														<div class="text-truncate">
+															Join the NL System
+														</div>
+													</td>
+													<td class="text-nowrap text-muted">25 Nov 2019</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 col-lg-8">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">Most Used Appliance</h3>
+									</div>
+									<div class="card-table table-responsive">
+										<table class="table table-vcenter">
+											<thead>
+												<tr>
+													<th>Appliance name</th>
+													<th>Today</th>
+													<th>Yesterday</th>
+													<th colspan="2">growth rate</th>
+												</tr>
+											</thead>
+											<tr>
+												<td>
+													Frdige
+												</td>
+												<td class="text-muted">4,896</td>
+												<td class="text-muted">3,654</td>
+												<td class="text-muted">82.54%</td>
+												<td class="text-end w-1">
+													<div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-1"></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Dish washer
+												</td>
+												<td class="text-muted">3,652</td>
+												<td class="text-muted">3,215</td>
+												<td class="text-muted">76.29%</td>
+												<td class="text-end w-1">
+													<div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-2"></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													sockets
+												</td>
+												<td class="text-muted">3,256</td>
+												<td class="text-muted">2,865</td>
+												<td class="text-muted">72.65%</td>
+												<td class="text-end w-1">
+													<div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-3"></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													light
+												</td>
+												<td class="text-muted">986</td>
+												<td class="text-muted">865</td>
+												<td class="text-muted">44.89%</td>
+												<td class="text-end w-1">
+													<div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-4"></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													microwave
+												</td>
+												<td class="text-muted">912</td>
+												<td class="text-muted">822</td>
+												<td class="text-muted">41.12%</td>
+												<td class="text-end w-1">
+													<div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-5"></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													electric space heater
+												</td>
+												<td class="text-muted">855</td>
+												<td class="text-muted">798</td>
+												<td class="text-muted">32.65%</td>
+												<td class="text-end w-1">
+													<div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-6"></div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-4">
+								<a href="https://github.com/sponsors/codecalm" class="card card-sponsor" target="_blank" rel="noopener" style="background-image: url(./static/sponsor-banner-homepage.svg)" aria-label="Sponsor Tabler!">
+									<div class="card-body"></div>
+								</a>
+							</div>
+							<div class="col-md-6 col-lg-4">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">Utilization Rate for Models</h3>
+									</div>
+									<table class="table card-table table-vcenter">
+										<thead>
+											<tr>
+												<th>Model</th>
+												<th colspan="2">Accuracy</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>VAE</td>
+												<td>71.0%</td>
+												<td class="w-50">
+													<div class="progress progress-xs">
+														<div class="progress-bar bg-primary" style="width: 71.0%"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>S2P</td>
+												<td>35.96%</td>
+												<td class="w-50">
+													<div class="progress progress-xs">
+														<div class="progress-bar bg-primary" style="width: 35.96%"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>S2S</td>
+												<td>24.9%</td>
+												<td class="w-50">
+													<div class="progress progress-xs">
+														<div class="progress-bar bg-primary" style="width: 24.9%"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>DAE</td>
+												<td>19.72%</td>
+												<td class="w-50">
+													<div class="progress progress-xs">
+														<div class="progress-bar bg-primary" style="width: 19.72%"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>FHMM</td>
+												<td>17.08%</td>
+												<td class="w-50">
+													<div class="progress progress-xs">
+														<div class="progress-bar bg-primary" style="width: 17.08%"></div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>CO</td>
+												<td>13.0%</td>
+												<td class="w-50">
+													<div class="progress progress-xs">
+														<div class="progress-bar bg-primary" style="width: 13.0%"></div>
+													</div>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="col-md-12 col-lg-8">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">Tasks</h3>
+									</div>
+									<div class="table-responsive">
+										<table class="table card-table table-vcenter">
+											<tr>
+												<td class="w-1 pe-0">
+													<input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" checked>
+												</td>
+												<td class="w-100">
+													<a href="#" class="text-reset">Extend the data model.</a>
+												</td>
+												<td class="text-nowrap text-muted">
+													<!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<rect x="4" y="5" width="16" height="16" rx="2" />
+														<line x1="16" y1="3" x2="16" y2="7" />
+														<line x1="8" y1="3" x2="8" y2="7" />
+														<line x1="4" y1="11" x2="20" y2="11" />
+														<line x1="11" y1="15" x2="12" y2="15" />
+														<line x1="12" y1="15" x2="12" y2="18" />
+													</svg>
+													August 04, 2021
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/check -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M5 12l5 5l10 -10" />
+														</svg>
+														2/7
+													</a>
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/message -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
+															<line x1="8" y1="9" x2="16" y2="9" />
+															<line x1="8" y1="13" x2="14" y2="13" />
+														</svg>
+														3</a>
+												</td>
+												<td>
+													<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="w-1 pe-0">
+													<input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task">
+												</td>
+												<td class="w-100">
+													<a href="#" class="text-reset">Verify the event flow.</a>
+												</td>
+												<td class="text-nowrap text-muted">
+													<!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<rect x="4" y="5" width="16" height="16" rx="2" />
+														<line x1="16" y1="3" x2="16" y2="7" />
+														<line x1="8" y1="3" x2="8" y2="7" />
+														<line x1="4" y1="11" x2="20" y2="11" />
+														<line x1="11" y1="15" x2="12" y2="15" />
+														<line x1="12" y1="15" x2="12" y2="18" />
+													</svg>
+													January 03, 2019
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/check -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M5 12l5 5l10 -10" />
+														</svg>
+														3/10
+													</a>
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/message -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
+															<line x1="8" y1="9" x2="16" y2="9" />
+															<line x1="8" y1="13" x2="14" y2="13" />
+														</svg>
+														6</a>
+												</td>
+												<td>
+													<span class="avatar avatar-sm">JL</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="w-1 pe-0">
+													<input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task">
+												</td>
+												<td class="w-100">
+													<a href="#" class="text-reset">Database backup and maintenance</a>
+												</td>
+												<td class="text-nowrap text-muted">
+													<!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<rect x="4" y="5" width="16" height="16" rx="2" />
+														<line x1="16" y1="3" x2="16" y2="7" />
+														<line x1="8" y1="3" x2="8" y2="7" />
+														<line x1="4" y1="11" x2="20" y2="11" />
+														<line x1="11" y1="15" x2="12" y2="15" />
+														<line x1="12" y1="15" x2="12" y2="18" />
+													</svg>
+													December 28, 2018
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/check -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M5 12l5 5l10 -10" />
+														</svg>
+														0/6
+													</a>
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/message -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
+															<line x1="8" y1="9" x2="16" y2="9" />
+															<line x1="8" y1="13" x2="14" y2="13" />
+														</svg>
+														1</a>
+												</td>
+												<td>
+													<span class="avatar avatar-sm" style="background-image: url(./static/avatars/002m.jpg)"></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="w-1 pe-0">
+													<input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" checked>
+												</td>
+												<td class="w-100">
+													<a href="#" class="text-reset">Identify the implementation team.</a>
+												</td>
+												<td class="text-nowrap text-muted">
+													<!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<rect x="4" y="5" width="16" height="16" rx="2" />
+														<line x1="16" y1="3" x2="16" y2="7" />
+														<line x1="8" y1="3" x2="8" y2="7" />
+														<line x1="4" y1="11" x2="20" y2="11" />
+														<line x1="11" y1="15" x2="12" y2="15" />
+														<line x1="12" y1="15" x2="12" y2="18" />
+													</svg>
+													November 07, 2020
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/check -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M5 12l5 5l10 -10" />
+														</svg>
+														6/10
+													</a>
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/message -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
+															<line x1="8" y1="9" x2="16" y2="9" />
+															<line x1="8" y1="13" x2="14" y2="13" />
+														</svg>
+														12</a>
+												</td>
+												<td>
+													<span class="avatar avatar-sm" style="background-image: url(./static/avatars/003m.jpg)"></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="w-1 pe-0">
+													<input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task">
+												</td>
+												<td class="w-100">
+													<a href="#" class="text-reset">Define users and workflow</a>
+												</td>
+												<td class="text-nowrap text-muted">
+													<!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<rect x="4" y="5" width="16" height="16" rx="2" />
+														<line x1="16" y1="3" x2="16" y2="7" />
+														<line x1="8" y1="3" x2="8" y2="7" />
+														<line x1="4" y1="11" x2="20" y2="11" />
+														<line x1="11" y1="15" x2="12" y2="15" />
+														<line x1="12" y1="15" x2="12" y2="18" />
+													</svg>
+													November 23, 2021
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/check -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M5 12l5 5l10 -10" />
+														</svg>
+														3/7
+													</a>
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/message -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
+															<line x1="8" y1="9" x2="16" y2="9" />
+															<line x1="8" y1="13" x2="14" y2="13" />
+														</svg>
+														5</a>
+												</td>
+												<td>
+													<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000f.jpg)"></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="w-1 pe-0">
+													<input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" checked>
+												</td>
+												<td class="w-100">
+													<a href="#" class="text-reset">Check Pull Requests</a>
+												</td>
+												<td class="text-nowrap text-muted">
+													<!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<rect x="4" y="5" width="16" height="16" rx="2" />
+														<line x1="16" y1="3" x2="16" y2="7" />
+														<line x1="8" y1="3" x2="8" y2="7" />
+														<line x1="4" y1="11" x2="20" y2="11" />
+														<line x1="11" y1="15" x2="12" y2="15" />
+														<line x1="12" y1="15" x2="12" y2="18" />
+													</svg>
+													January 14, 2021
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/check -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M5 12l5 5l10 -10" />
+														</svg>
+														2/9
+													</a>
+												</td>
+												<td class="text-nowrap">
+													<a href="#" class="text-muted">
+														<!-- Download SVG icon from http://tabler-icons.io/i/message -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
+															<line x1="8" y1="9" x2="16" y2="9" />
+															<line x1="8" y1="13" x2="14" y2="13" />
+														</svg>
+														3</a>
+												</td>
+												<td>
+													<span class="avatar avatar-sm" style="background-image: url(./static/avatars/001f.jpg)"></span>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">Train and Test</h3>
+									</div>
+									<div class="card-body border-bottom py-3">
+										<div class="d-flex">
+											<div class="text-muted">
+												Show
+												<div class="mx-2 d-inline-block">
+													<input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
+												</div>
+												entries
+											</div>
+											<div class="ms-auto text-muted">
+												Search:
+												<div class="ms-2 d-inline-block">
+													<input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="table-responsive">
+										<table class="table card-table table-vcenter text-nowrap datatable">
+											<thead>
+												<tr>
+													<th class="w-1"><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select all invoices"></th>
+													<th class="w-1">No.
+														<!-- Download SVG icon from http://tabler-icons.io/i/chevron-up -->
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm icon-thick" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+															<polyline points="6 15 12 9 18 15" />
+														</svg>
+													</th>
+													<th>Appliance</th>
+													<th>Model</th>
+													<th>VAT No.</th>
+													<th>Created</th>
+													<th>Status</th>
+													<th>Power(Today)</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for item in data %}
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">{{ item[2] }}</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">{{ item[0] }}</a>
+													</td>
+													<td>
+														<span class="flag flag-country-us"></span> {{ item[1] }}
+													</td>
+													<td>
+														87956621
+													</td>
+													<td>
+														{{ item[4] }}
+													</td>
+													<td>
+														<span id="trainTd" class="{{ item[6] }}"></span> <text id="status">{{ item[3] }}</text>
+													</td>
+													<td>{{ item[5] }}</td>
+													<td class="text-end">
+														<span class="dropdown">
+							                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+							                              <div class="dropdown-menu dropdown-menu-end">
+							                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-detail">
+							                                  Details
+							                                </a>
+							                                <a class="dropdown-item" href="/stop/{{item[2]}}">
+							                                  Stop
+							                                </a>
+							                              </div>
+							                            </span>
+													</td>
+												</tr>
+												{% endfor %}
+												<!--<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001401</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">washer dryer</a>
+													</td>
+													<td>
+														<span class="flag flag-country-us"></span> VAE
+													</td>
+													<td>
+														87956621
+													</td>
+													<td>
+														15 Dec 2017
+													</td>
+													<td>
+														<span class="badge bg-success me-1"></span> Running
+													</td>
+													<td>887</td>
+													<td class="text-end">
+														<span class="dropdown">
+							                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+							                              <div class="dropdown-menu dropdown-menu-end">
+							                                <a class="dropdown-item" href="#">
+							                                  Details
+							                                </a>
+							                                <a class="dropdown-item" href="#">
+							                                  Stop
+							                                </a>
+							                              </div>
+							                            </span>
+													</td>
+												</tr>
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001402</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">electric oven</a>
+													</td>
+													<td>
+														<span class="flag flag-country-gb"></span> S2S
+													</td>
+													<td>
+														87956421
+													</td>
+													<td>
+														12 Apr 2017
+													</td>
+													<td>
+														<span class="badge bg-warning me-1"></span> Standby
+													</td>
+													<td>1200</td>
+													<td class="text-end">
+														<span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">
+                                  Details
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  Stop
+                                </a>
+                              </div>
+                            </span>
+													</td>
+												</tr>
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001403</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">electric stover</a>
+													</td>
+													<td>
+														<span class="flag flag-country-de"></span> VAE
+													</td>
+													<td>
+														87952621
+													</td>
+													<td>
+														23 Oct 2017
+													</td>
+													<td>
+														<span class="badge bg-warning me-1"></span> Standby
+													</td>
+													<td>534</td>
+													<td class="text-end">
+														<span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">
+                                  Details
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  Stop
+                                </a>
+                              </div>
+                            </span>
+													</td>
+												</tr>
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001404</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">electric space heater</a>
+													</td>
+													<td>
+														<span class="flag flag-country-br"></span> S2P
+													</td>
+													<td>
+														87953421
+													</td>
+													<td>
+														2 Sep 2017
+													</td>
+													<td>
+														<span class="badge bg-secondary me-1"></span> Closed
+													</td>
+													<td>1500</td>
+													<td class="text-end">
+														<span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">
+                                  Details
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  Stop
+                                </a>
+                              </div>
+                            </span>
+													</td>
+												</tr>
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001405</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">microwave</a>
+													</td>
+													<td>
+														<span class="flag flag-country-pl"></span> S2S
+													</td>
+													<td>
+														87956621
+													</td>
+													<td>
+														29 Jan 2018
+													</td>
+													<td>
+														<span class="badge bg-danger me-1"></span> In Risk
+													</td>
+													<td>648</td>
+													<td class="text-end">
+														<span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">
+                                  Details
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  Stop
+                                </a>
+                              </div>
+                            </span>
+													</td>
+												</tr>
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001406</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">light</a>
+													</td>
+													<td>
+														<span class="flag flag-country-br"></span> VAE
+													</td>
+													<td>
+														87956621
+													</td>
+													<td>
+														4 Feb 2018
+													</td>
+													<td>
+														<span class="badge bg-secondary me-1"></span> Closed
+													</td>
+													<td>300</td>
+													<td class="text-end">
+														<span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">
+                                  Details
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  Stop
+                                </a>
+                              </div>
+                            </span>
+													</td>
+												</tr>
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001407</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">sockets</a>
+													</td>
+													<td>
+														<span class="flag flag-country-us"></span> S2S
+													</td>
+													<td>
+														87956621
+													</td>
+													<td>
+														22 Mar 2018
+													</td>
+													<td>
+														<span class="badge bg-success me-1"></span> Running
+													</td>
+													<td>2500</td>
+													<td class="text-end">
+														<span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">
+                                  Details
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  Stop
+                                </a>
+                              </div>
+                            </span>
+													</td>
+												</tr>
+												<tr>
+													<td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
+													<td><span class="text-muted">001408</span></td>
+													<td>
+														<a href="invoice.html" class="text-reset" tabindex="-1">Icons</a>
+													</td>
+													<td>
+														<span class="flag flag-country-pl"></span> VAE
+													</td>
+													<td>
+														87956621
+													</td>
+													<td>
+														13 May 2018
+													</td>
+													<td>
+														<span class="badge bg-success me-1"></span> Running
+													</td>
+													<td>940</td>
+													<td class="text-end">
+														<span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">
+                                  Details
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                  Stop
+                                </a>
+                              </div>
+                            </span>
+													</td>
+												</tr>-->
+											</tbody>
+										</table>
+									</div>
+									<div class="card-footer d-flex align-items-center">
+										<p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
+										<ul class="pagination m-0 ms-auto">
+											<li class="page-item disabled">
+												<a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+													<!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<polyline points="15 6 9 12 15 18" />
+													</svg>
+													prev
+												</a>
+											</li>
+											<li class="page-item active">
+												<a class="page-link" href="#">1</a>
+											</li>
+											<li class="page-item">
+												<a class="page-link" href="#">2</a>
+											</li>
+											<li class="page-item">
+												<a class="page-link" href="#">3</a>
+											</li>
+											<li class="page-item">
+												<a class="page-link" href="#">4</a>
+											</li>
+											<li class="page-item">
+												<a class="page-link" href="#">5</a>
+											</li>
+											<li class="page-item">
+												<a class="page-link" href="#">
+													next
+													<!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+													<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+														<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+														<polyline points="9 6 15 12 9 18" />
+													</svg>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<form action="/" method="post" id="TrainForm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Post your data</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+
+							<div class="modal-body">
+								<div class="mb-3">
+									<label class="form-label">Appliance Name</label>
+									<input type="text" class="form-control" name="example-text-input" placeholder="Your report name">
+								</div>
+								<label class="form-label">Appliance type</label>
+								<div class="form-selectgroup-boxes row mb-3">
+									<div class="col-lg-6">
+										<label class="form-selectgroup-item">
+                  <input type="radio" name="report-type" value="1" class="form-selectgroup-input" checked>
+                  <span class="form-selectgroup-label d-flex align-items-center p-3">
+                    <span class="me-3">
+                      <span class="form-selectgroup-check"></span>
+                    </span>
+                    <span class="form-selectgroup-label-content">
+                      <span class="form-selectgroup-title strong mb-1">Published</span>
+                      <span class="d-block text-muted">Provide your original basic data needed for the report.</span>
+                    </span>
+                  </span>
+                </label>
+									</div>
+									<div class="col-lg-6">
+										<label class="form-selectgroup-item">
+                  <input type="radio" name="report-type" value="1" class="form-selectgroup-input">
+                  <span class="form-selectgroup-label d-flex align-items-center p-3">
+                    <span class="me-3">
+                      <span class="form-selectgroup-check"></span>
+                    </span>
+                    <span class="form-selectgroup-label-content">
+                      <span class="form-selectgroup-title strong mb-1">Encrypted</span>
+                      <span class="d-block text-muted">add noise through the pattern-LDP model to ensure your data safety.</span>
+                    </span>
+                  </span>
+                </label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-8">
+										<div class="mb-3">
+											<label class="form-label">Report url</label>
+											<div class="input-group input-group-flat">
+												<span class="input-group-text">
+                      https://xxx/reports/
+                    </span>
+												<input type="text" class="form-control ps-0" value="report-01" autocomplete="off">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="mb-3">
+											<label class="form-label">Trainning Model</label>
+											<select class="form-select" name="Trainning_model">
+												<option value="VAE" selected>VAE(Variational AutoEncoder)</option>
+												<option value="DAE">DAE(Denoising AutoEncoder)</option>
+												<option value="S2S">S2S(Sequence to Sequence)</option>
+												<option value="S2P">S2P(Sequence to Point)</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="mb-3">
+											<label class="form-label">Client No.</label>
+											<input type="text" name="clientNo" class="form-control">
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="mb-3">
+											<label class="form-label">Trainning period</label>
+											<input type="date" name="trainTime" class="form-control">
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div>
+											<label class="form-label">Additional information</label>
+											<textarea class="form-control" rows="3"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+									Cancel
+								</a>
+								<a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal" onclick="document.getElementById('TrainForm').submit()">
+									<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<line x1="12" y1="5" x2="12" y2="19" />
+										<line x1="5" y1="12" x2="19" y2="12" />
+									</svg>
+									Post your data<br />
+
+								</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		<div class="modal modal-blur fade" id="modal-detail" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<form action="/" method="post" id="TrainForm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="page-header d-print-none">
+									<div class="container-xl">
+										<div class="row g-2 align-items-center">
+											<div class="col">
+												<h2 class="page-title">
+                  									训练详情
+                								</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+
+						<div class="modal-body">
+							
+
+							<div class="page-wrapper">
+								<!-- Page header -->
+								
+								<div class="mb-3">
+									<!--<label class="form-label">Progress</label>-->
+									<div class="progress mb-2">
+										<div class="progress-bar" style="width: 38%" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="38% Complete">
+											<span class="visually-hidden">38% Complete</span>
+										</div>
+									</div>
+									<div class="progress">
+										<div class="progress-bar progress-bar-indeterminate bg-green"></div>
+									</div>
+								</div>
+								
+								<!-- Page body -->
+								<div class="page-body">
+									<div class="container-xl">
+										<div class="card">
+											<div class="card-header">
+												<h3 class="card-title">基本信息</h3>
+											</div>
+											<div class="card-body">
+												<div class="datagrid">
+													<div class="datagrid-item">
+														<div class="datagrid-title">Appliance Name</div>
+														<div class="datagrid-content">WasherDryer</div>
+													</div>
+													<div class="datagrid-item">
+														<div class="datagrid-title">Trainning model</div>
+														<div class="datagrid-content">VAE</div>
+													</div>
+													<div class="datagrid-item">
+														<div class="datagrid-title">No.</div>
+														<div class="datagrid-content">1401</div>
+													</div>
+													<div class="datagrid-item">
+														<div class="datagrid-title">Trainning period</div>
+														<div class="datagrid-content">2023-03-07 15:16:41</div>
+													</div>
+													<div class="datagrid-item">
+														<div class="datagrid-title">Creator</div>
+														<div class="datagrid-content">
+															<div class="d-flex align-items-center">
+																<span class="avatar avatar-xs me-2 avatar-rounded" style="background-image: url(./static/avatars/000m.jpg)"></span> ECHO
+															</div>
+														</div>
+													</div>
+													<div class="datagrid-item">
+														<div class="datagrid-title">Address</div>
+														<div class="datagrid-content">15 days</div>
+													</div>
+													<div class="datagrid-item">
+														<div class="datagrid-title">status</div>
+														<div class="datagrid-content">
+															<span class="status status-green">
+                        Running
+                      </span>
+														</div>
+													</div>
+													<div class="datagrid-item">
+														<div class="datagrid-title">Avatars list</div>
+														<div class="datagrid-content">
+															<div class="avatar-list avatar-list-stacked">
+																<span class="avatar avatar-xs avatar-rounded" style="background-image: url(./static/avatars/000m.jpg)"></span>
+																<span class="avatar avatar-xs avatar-rounded">JL</span>
+																<span class="avatar avatar-xs avatar-rounded" style="background-image: url(./static/avatars/002m.jpg)"></span>
+																<span class="avatar avatar-xs avatar-rounded" style="background-image: url(./static/avatars/003m.jpg)"></span>
+																<span class="avatar avatar-xs avatar-rounded" style="background-image: url(./static/avatars/000f.jpg)"></span>
+																<span class="avatar avatar-xs avatar-rounded">+3</span>
+															</div>
+														</div>
+													</div>
+													
+													<div class="datagrid-item">
+														<div class="datagrid-title">If need encryted</div>
+														<div class="datagrid-content">
+															<!-- Download SVG icon from http://tabler-icons.io/i/check -->
+															<svg xmlns="http://www.w3.org/2000/svg" class="icon text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+																<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+																<path d="M5 12l5 5l10 -10" />
+															</svg>
+															encrypted
+														</div>
+													</div>
+													
+													<div class="datagrid-item">
+														<div class="datagrid-title">Longer description</div>
+														<div class="datagrid-content">
+															Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+
+							</div>
+						</div>
+				</form>
+				</div>
+
+			</div>
+
+			
+
+			<!-- Libs JS -->
+			<script src="../static/libs/apexcharts/dist/apexcharts.min.js" defer></script>
+			<script src="../static/libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
+			<script src="../static/libs/jsvectormap/dist/maps/world.js" defer></script>
+			<script src="../static/libs/jsvectormap/dist/maps/world-merc.js" defer></script>
+			<!-- Tabler Core -->
+			<script src="../static/js/tabler.min.js" defer></script>
+			<script src="../static/js/demo.min.js" defer></script>
+			<script>
+				// @formatter:off
+				document.addEventListener("DOMContentLoaded", function() {
+					window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg'), {
+						chart: {
+							type: "area",
+							fontFamily: 'inherit',
+							height: 40.0,
+							sparkline: {
+								enabled: true
+							},
+							animations: {
+								enabled: false
+							},
+						},
+						dataLabels: {
+							enabled: false,
+						},
+						fill: {
+							opacity: .16,
+							type: 'solid'
+						},
+						stroke: {
+							width: 2,
+							lineCap: "round",
+							curve: "smooth",
+						},
+						series: [{
+							name: "Profits",
+							data: [37, 35, 44, 28, 36, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46, 39, 62, 51, 35, 41, 67]
+						}],
+						tooltip: {
+							theme: 'dark'
+						},
+						grid: {
+							strokeDashArray: 4,
+						},
+						xaxis: {
+							labels: {
+								padding: 0,
+							},
+							tooltip: {
+								enabled: false
+							},
+							axisBorder: {
+								show: false,
+							},
+							type: 'datetime',
+						},
+						yaxis: {
+							labels: {
+								padding: 4
+							},
+						},
+						labels: [
+							'2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
+						],
+						colors: [tabler.getColor("primary")],
+						legend: {
+							show: false,
+						},
+					})).render();
+				});
+				// @formatter:on
+			</script>
+			<script>
+				//    // @formatter:off
+				//    document.addEventListener("DOMContentLoaded", function () {
+				//    	window.ApexCharts && (new ApexCharts(document.getElementById('chart-new-clients'), {
+				//    		chart: {
+				//    			type: "line",
+				//    			fontFamily: 'inherit',
+				//    			height: 40.0,
+				//    			sparkline: {
+				//    				enabled: true
+				//    			},
+				//    			animations: {
+				//    				enabled: false
+				//    			},
+				//    		},
+				//    		fill: {
+				//    			opacity: 1,
+				//    		},
+				//    		stroke: {
+				//    			width: [2, 1],
+				//    			dashArray: [0, 3],
+				//    			lineCap: "round",
+				//    			curve: "smooth",
+				//    		},
+				//    		series: [{
+				//    			name: "May",
+				//    			data: [37, 35, 44, 28, 36, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 4, 46, 39, 62, 51, 35, 41, 67]
+				//    		},{
+				//    			name: "April",
+				//    			data: [93, 54, 51, 24, 35, 35, 31, 67, 19, 43, 28, 36, 62, 61, 27, 39, 35, 41, 27, 35, 51, 46, 62, 37, 44, 53, 41, 65, 39, 37]
+				//    		}],
+				//    		tooltip: {
+				//    			theme: 'dark'
+				//    		},
+				//    		grid: {
+				//    			strokeDashArray: 4,
+				//    		},
+				//    		xaxis: {
+				//    			labels: {
+				//    				padding: 0,
+				//    			},
+				//    			tooltip: {
+				//    				enabled: false
+				//    			},
+				//    			type: 'datetime',
+				//    		},
+				//    		yaxis: {
+				//    			labels: {
+				//    				padding: 4
+				//    			},
+				//    		},
+				//    		labels: [
+				//    			'2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
+				//    		],
+				//    		colors: [tabler.getColor("primary"), tabler.getColor("gray-600")],
+				//    		legend: {
+				//    			show: false,
+				//    		},
+				//    	})).render();
+				//    });
+				//    // @formatter:on
+			</script>
+			<!--<script>
+			// @formatter:off
+			document.addEventListener("DOMContentLoaded", function() {
+				window.ApexCharts && (new ApexCharts(document.getElementById('chart-active-users'), {
+					chart: {
+						type: "bar",
+						fontFamily: 'inherit',
+						height: 40.0,
+						sparkline: {
+							enabled: true
+						},
+						animations: {
+							enabled: false
+						},
+					},
+					plotOptions: {
+						bar: {
+							columnWidth: '50%',
+						}
+					},
+					dataLabels: {
+						enabled: false,
+					},
+					fill: {
+						opacity: 1,
+					},
+					series: [{
+						name: "Profits",
+						data: [37, 35, 44, 28, 36, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46, 39, 62, 51, 35, 41, 67]
+					}],
+					tooltip: {
+						theme: 'dark'
+					},
+					grid: {
+						strokeDashArray: 4,
+					},
+					xaxis: {
+						labels: {
+							padding: 0,
+						},
+						tooltip: {
+							enabled: false
+						},
+						axisBorder: {
+							show: false,
+						},
+						type: 'datetime',
+					},
+					yaxis: {
+						labels: {
+							padding: 4
+						},
+					},
+					labels: [
+						'2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
+					],
+					colors: [tabler.getColor("primary")],
+					legend: {
+						show: false,
+					},
+				})).render();
+			});
+			// @formatter:on
+		</script>-->
+			<script type="text/javascript" src="../static/js/chart.js">
+				//    document.addEventListener("DOMContentLoaded", function () {
+				//    	window.ApexCharts && (new ApexCharts(document.getElementById('chart-mentions'), {
+				//    		chart: {
+				//    			type: "bar",
+				//    			fontFamily: 'inherit',
+				//    			height: 240,
+				//    			parentHeightOffset: 0,
+				//    			toolbar: {
+				//    				show: false,
+				//    			},
+				//    			animations: {
+				//    				enabled: false
+				//    			},
+				//    			stacked: true,
+				//    		},
+				//    		plotOptions: {
+				//    			bar: {
+				//    				columnWidth: '50%',
+				//    			}
+				//    		},
+				//    		dataLabels: {
+				//    			enabled: false,
+				//    		},
+				//    		fill: {
+				//    			opacity: 1,
+				//    		},
+				//    		series: [{
+				//    			name: "Web",
+				//    			data: [1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 2, 12, 5, 8, 22, 6, 8, 6, 4, 1, 8, 24, 29, 51, 40, 47, 23, 26, 50, 26, 41, 22, 46, 47, 81, 46, 6]
+				//    		},{
+				//    			name: "Social",
+				//    			data: [2, 5, 4, 3, 3, 1, 4, 7, 5, 1, 2, 5, 3, 2, 6, 7, 7, 1, 5, 5, 2, 12, 4, 6, 18, 3, 5, 2, 13, 15, 20, 47, 18, 15, 11, 10, 0]
+				//    		},{
+				//    			name: "Other",
+				//    			data: [2, 9, 1, 7, 8, 3, 6, 5, 5, 4, 6, 4, 1, 9, 3, 6, 7, 5, 2, 8, 4, 9, 1, 2, 6, 7, 5, 1, 8, 3, 2, 3, 4, 9, 7, 1, 6]
+				//    		}],
+				//    		tooltip: {
+				//    			theme: 'dark'
+				//    		},
+				//    		grid: {
+				//    			padding: {
+				//    				top: -20,
+				//    				right: 0,
+				//    				left: -4,
+				//    				bottom: -4
+				//    			},
+				//    			strokeDashArray: 4,
+				//    			xaxis: {
+				//    				lines: {
+				//    					show: true
+				//    				}
+				//    			},
+				//    		},
+				//    		xaxis: {
+				//    			labels: {
+				//    				padding: 0,
+				//    			},
+				//    			tooltip: {
+				//    				enabled: false
+				//    			},
+				//    			axisBorder: {
+				//    				show: false,
+				//    			},
+				//    			type: 'datetime',
+				//    		},
+				//    		yaxis: {
+				//    			labels: {
+				//    				padding: 4
+				//    			},
+				//    		},
+				//    		labels: [
+				//    			'2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19', '2020-07-20', '2020-07-21', '2020-07-22', '2020-07-23', '2020-07-24', '2020-07-25', '2020-07-26'
+				//    		],
+				//    		colors: [tabler.getColor("primary"), tabler.getColor("primary", 0.8), tabler.getColor("green", 0.8)],
+				//    		legend: {
+				//    			show: false,
+				//    		},
+				//    	})).render();
+				//    });
+				//    // @formatter:on
+			</script>
+			<script>
+				// @formatter:on
+				document.addEventListener("DOMContentLoaded", function() {
+					const map = new jsVectorMap({
+						selector: '#map-world',
+						map: 'world',
+						backgroundColor: 'transparent',
+						regionStyle: {
+							initial: {
+								fill: tabler.getColor('body-bg'),
+								stroke: tabler.getColor('border-color'),
+								strokeWidth: 2,
+							}
+						},
+						zoomOnScroll: false,
+						zoomButtons: false,
+						// -------- Series --------
+						visualizeData: {
+							scale: [tabler.getColor('bg-surface'), tabler.getColor('primary')],
+							values: {
+								"AF": 16,
+								"AL": 11,
+								"DZ": 158,
+								"AO": 85,
+								"AG": 1,
+								"AR": 351,
+								"AM": 8,
+								"AU": 1219,
+								"AT": 366,
+								"AZ": 52,
+								"BS": 7,
+								"BH": 21,
+								"BD": 105,
+								"BB": 3,
+								"BY": 52,
+								"BE": 461,
+								"BZ": 1,
+								"BJ": 6,
+								"BT": 1,
+								"BO": 19,
+								"BA": 16,
+								"BW": 12,
+								"BR": 2023,
+								"BN": 11,
+								"BG": 44,
+								"BF": 8,
+								"BI": 1,
+								"KH": 11,
+								"CM": 21,
+								"CA": 1563,
+								"CV": 1,
+								"CF": 2,
+								"TD": 7,
+								"CL": 199,
+								"CN": 5745,
+								"CO": 283,
+								"KM": 0,
+								"CD": 12,
+								"CG": 11,
+								"CR": 35,
+								"CI": 22,
+								"HR": 59,
+								"CY": 22,
+								"CZ": 195,
+								"DK": 304,
+								"DJ": 1,
+								"DM": 0,
+								"DO": 50,
+								"EC": 61,
+								"EG": 216,
+								"SV": 21,
+								"GQ": 14,
+								"ER": 2,
+								"EE": 19,
+								"ET": 30,
+								"FJ": 3,
+								"FI": 231,
+								"FR": 2555,
+								"GA": 12,
+								"GM": 1,
+								"GE": 11,
+								"DE": 3305,
+								"GH": 18,
+								"GR": 305,
+								"GD": 0,
+								"GT": 40,
+								"GN": 4,
+								"GW": 0,
+								"GY": 2,
+								"HT": 6,
+								"HN": 15,
+								"HK": 226,
+								"HU": 132,
+								"IS": 12,
+								"IN": 1430,
+								"ID": 695,
+								"IR": 337,
+								"IQ": 84,
+								"IE": 204,
+								"IL": 201,
+								"IT": 2036,
+								"JM": 13,
+								"JP": 5390,
+								"JO": 27,
+								"KZ": 129,
+								"KE": 32,
+								"KI": 0,
+								"KR": 986,
+								"KW": 117,
+								"KG": 4,
+								"LA": 6,
+								"LV": 23,
+								"LB": 39,
+								"LS": 1,
+								"LR": 0,
+								"LY": 77,
+								"LT": 35,
+								"LU": 52,
+								"MK": 9,
+								"MG": 8,
+								"MW": 5,
+								"MY": 218,
+								"MV": 1,
+								"ML": 9,
+								"MT": 7,
+								"MR": 3,
+								"MU": 9,
+								"MX": 1004,
+								"MD": 5,
+								"MN": 5,
+								"ME": 3,
+								"MA": 91,
+								"MZ": 10,
+								"MM": 35,
+								"NA": 11,
+								"NP": 15,
+								"NL": 770,
+								"NZ": 138,
+								"NI": 6,
+								"NE": 5,
+								"NG": 206,
+								"NO": 413,
+								"OM": 53,
+								"PK": 174,
+								"PA": 27,
+								"PG": 8,
+								"PY": 17,
+								"PE": 153,
+								"PH": 189,
+								"PL": 438,
+								"PT": 223,
+								"QA": 126,
+								"RO": 158,
+								"RU": 1476,
+								"RW": 5,
+								"WS": 0,
+								"ST": 0,
+								"SA": 434,
+								"SN": 12,
+								"RS": 38,
+								"SC": 0,
+								"SL": 1,
+								"SG": 217,
+								"SK": 86,
+								"SI": 46,
+								"SB": 0,
+								"ZA": 354,
+								"ES": 1374,
+								"LK": 48,
+								"KN": 0,
+								"LC": 1,
+								"VC": 0,
+								"SD": 65,
+								"SR": 3,
+								"SZ": 3,
+								"SE": 444,
+								"CH": 522,
+								"SY": 59,
+								"TW": 426,
+								"TJ": 5,
+								"TZ": 22,
+								"TH": 312,
+								"TL": 0,
+								"TG": 3,
+								"TO": 0,
+								"TT": 21,
+								"TN": 43,
+								"TR": 729,
+								"TM": 0,
+								"UG": 17,
+								"UA": 136,
+								"AE": 239,
+								"GB": 2258,
+								"US": 4624,
+								"UY": 40,
+								"UZ": 37,
+								"VU": 0,
+								"VE": 285,
+								"VN": 101,
+								"YE": 30,
+								"ZM": 15,
+								"ZW": 5
+							},
+						},
+					});
+					window.addEventListener("resize", () => {
+						map.updateSize();
+					});
+				});
+				// @formatter:off
+			</script>
+			<script>
+				// @formatter:off
+				document.addEventListener("DOMContentLoaded", function() {
+					window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-activity'), {
+						chart: {
+							type: "radialBar",
+							fontFamily: 'inherit',
+							height: 40,
+							width: 40,
+							animations: {
+								enabled: false
+							},
+							sparkline: {
+								enabled: true
+							},
+						},
+						tooltip: {
+							enabled: false,
+						},
+						plotOptions: {
+							radialBar: {
+								hollow: {
+									margin: 0,
+									size: '75%'
+								},
+								track: {
+									margin: 0
+								},
+								dataLabels: {
+									show: false
+								}
+							}
+						},
+						colors: [tabler.getColor("blue")],
+						series: [35],
+					})).render();
+				});
+				// @formatter:on
+			</script>
+			<script>
+				// @formatter:off
+				//    document.addEventListener("DOMContentLoaded", function () {
+				//    	window.ApexCharts && (new ApexCharts(document.getElementById('chart-development-activity'), {
+				//    		chart: {
+				//    			type: "area",
+				//    			fontFamily: 'inherit',
+				//    			height: 192,
+				//    			sparkline: {
+				//    				enabled: true
+				//    			},
+				//    			animations: {
+				//    				enabled: false
+				//    			},
+				//    		},
+				//    		dataLabels: {
+				//    			enabled: false,
+				//    		},
+				//    		fill: {
+				//    			opacity: .16,
+				//    			type: 'solid'
+				//    		},
+				//    		stroke: {
+				//    			width: 2,
+				//    			lineCap: "round",
+				//    			curve: "smooth",
+				//    		},
+				//    		series: [{
+				//    			name: "Purchases",
+				//    			data: [3, 5, 4, 6, 7, 5, 6, 8, 24, 7, 12, 5, 6, 3, 8, 4, 14, 30, 17, 19, 15, 14, 25, 32, 40, 55, 60, 48, 52, 70]
+				//    		}],
+				//    		tooltip: {
+				//    			theme: 'dark'
+				//    		},
+				//    		grid: {
+				//    			strokeDashArray: 4,
+				//    		},
+				//    		xaxis: {
+				//    			labels: {
+				//    				padding: 0,
+				//    			},
+				//    			tooltip: {
+				//    				enabled: false
+				//    			},
+				//    			axisBorder: {
+				//    				show: false,
+				//    			},
+				//    			type: 'datetime',
+				//    		},
+				//    		yaxis: {
+				//    			labels: {
+				//    				padding: 4
+				//    			},
+				//    		},
+				//    		labels: [
+				//    			'2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
+				//    		],
+				//    		colors: [tabler.getColor("primary")],
+				//    		legend: {
+				//    			show: false,
+				//    		},
+				//    		point: {
+				//    			show: false
+				//    		},
+				//    	})).render();
+				//    });
+				//    // @formatter:on
+			</script>
+	</body>
+
+</html>

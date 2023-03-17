@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my_page</title>
+    <script src="../static/js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+    <h1>疫情追踪</h1>
+    <h3>实时报道</h3>
+    <button>点我</button>
+    <script>
+        $("button").click(function (){
+            $.ajax({
+                url:"/ajax",
+                type:"post",
+                data:{"name":"lisi","score":"90"},
+                success:function (d){
+                    $("h1").html("武汉加油"+d)
+                },error:function (){
+                    alert("ajax请求失败")
+                }
+            })
+        })
+    </script>
+</body>
+</html>
